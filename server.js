@@ -11,7 +11,7 @@ const cookieParser = require("cookie-parser")
 const path = require("path");
 
 const app  = express()
-app.use(cors());
+
 // Middlewares
 app.use(express.json())
 app.use(cookieParser())
@@ -21,7 +21,10 @@ app.use(bodyParser.json())
 //      origin : ["http://localhost:3000", "https://pinvent-4fdojnnbo-adityaphalswal.vercel.app"],
 //      credentials: false
 //  }))
-
+app.use(cors({
+    origin: '*',
+    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+}));
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")))
 
